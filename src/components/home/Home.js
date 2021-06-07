@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Header from "../header/Header";
 import axios from "axios";
+import { HomeImg, ImgDiv, MainContainer } from "./HomeStyle";
+import RecipeCardComp from "./RecipeCard";
+import HomeSvg from "../../assets/home.svg";
 
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
 const APP_ID = "4e9f05eb";
@@ -16,14 +19,37 @@ const Home = () => {
   const getData = async () => {
     if (query !== "") {
       const result = await axios.get(url);
-      console.log(result);
+
+      if (result.status === 200) {
+        setRecipes(result.data.hits);
+        console.log(result.data.hits);
+      }
+    } else {
+      alert("Please fill the form!");
     }
   };
-  getData();
 
   return (
     <div>
-      <Header />
+      <Header
+        setQuery={setQuery}
+        query={query}
+        getData={getData}
+        mealTypes={mealTypes}
+        setMeal={setMeal}
+        meal={meal}
+      />
+      {recipes ? (
+        <MainContainer>
+          {recipes?.map((recipe, index) => (
+            <RecipeCardComp key={index} recipe={recipe?.recipe} />
+          ))}
+        </MainContainer>
+      ) : (
+        <ImgDiv>
+          <HomeImg src={HomeSvg} />
+        </ImgDiv>
+      )}
     </div>
   );
 };
