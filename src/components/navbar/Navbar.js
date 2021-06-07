@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hamburger, Logo, Menulink, Nav, Menu } from "./navbarStyles";
+import { Hamburger, Logo, MenuLink, Nav, Menu } from "./navbarStyles";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +7,7 @@ export default function Navbar() {
     <Nav>
       <Logo to="/">
         <i>{"ed8en />"}</i>
-        <span>reipe</span>
+        <span>recipe</span>
       </Logo>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
@@ -23,9 +23,8 @@ export default function Navbar() {
         >
           Github
         </MenuLink>
+        <MenuLink to="/login">Logout</MenuLink>
       </Menu>
-
-      <h2>Navbar</h2>
     </Nav>
   );
 }
