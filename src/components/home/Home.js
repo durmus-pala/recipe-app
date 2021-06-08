@@ -5,12 +5,15 @@ import { HomeImg, ImgDiv, MainContainer } from "./HomeStyle";
 import RecipeCardComp from "./RecipeCard";
 import HomeSvg from "../../assets/home.svg";
 
+// const APP_ID = process.env.REACT_APP_API_ID;
+// const APP_KEY = process.env.REACT_APP_API_KEY;
+
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
 const APP_ID = "4e9f05eb";
 const APP_KEY = "9b904d703fa0d46a88ce1ac63f29f498";
 
 const Home = () => {
-  const [query, setQuery] = useState("apple");
+  const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState();
   const [meal, setMeal] = useState(mealTypes[0].toLowerCase());
 
